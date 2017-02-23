@@ -1,0 +1,38 @@
+﻿<Page x:Class="Demo.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:Demo"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:viewModels="using:Demo.ViewModels"
+      mc:Ignorable="d">
+    <Page.DataContext>
+        <viewModels:MainViewModel />
+    </Page.DataContext>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView ItemsSource="{Binding Path=Persons}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Path=Name}" />
+                        <TextBlock Margin="4,0,0,0"
+                                   Text="{Binding Path=Age}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment"
+                            Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <ProgressRing IsActive="{Binding Path=IsBusy}" />
+        <Button HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Click="ButtonBase_OnClick"
+                Content="Refresh" />
+    </Grid>
+</Page>
