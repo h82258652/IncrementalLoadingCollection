@@ -45,7 +45,7 @@ namespace Demo.ViewModels
             IsBusy = true;
             try
             {
-                await Task.Delay(3000);
+                await Task.Delay(3000, cancellationToken);
                 var persons = new List<Person>();
                 for (var i = pageIndex; i < pageIndex + 10; i++)
                 {
